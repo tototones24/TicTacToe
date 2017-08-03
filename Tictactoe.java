@@ -2,6 +2,8 @@ import java.util.*;
 
 public class Tictactoe {
 
+    public int _n = 3;
+
     public int[][] grid;
 
 
@@ -11,6 +13,7 @@ public class Tictactoe {
     }
 
     public Tictactoe(int n) {
+        _n = n;
         grid = new int[n][n];
     }
 
@@ -29,14 +32,61 @@ public class Tictactoe {
         }
     }
 
-    public boolean hasWon(int row, int col) {
+    public boolean hasWon(int r, int c) {
         //checking the top
         if (r - 2 >= 0) {
             if (grid[r - 1][c] == grid[r][c] && grid[r - 2][c] == grid[r][c]) {
                 return true;
             }
         }
+        //checking the bottom
+        if (r + 2 < _n) {
+            if (grid[r + 1][c] == grid[r][c] && grid[r + 2][c] == grid[r][c]) {
+                return true;
+            }
+        }
+        //checking the left
+         if (c - 2 >= 0 ) {
+            if (grid[r][c - 1] == grid[r][c] && grid[r][c - 2] == grid[r][c]) {
+                return true;
+            }
+        }
+        
+
         //checking the right
+         if (c + 2 <= _n) {
+            if (grid[r][c + 1] == grid[r][c] && grid[r][c + 2] == grid[r][c]) {
+                return true;
+            }
+3
+        }
+
+
+        
+        //checking up right
+        
+
+        if (grid[r - 1][c + 1] == grid[r][c] && grid[r - 2][c + 2] == grid[r][c]) {
+            return true;
+        }
+
+        //checking up left
+        if (grid[r - 1][c - 1] == grid[r][c] && grid[r - 2][c - 2] == grid[r][c]) {
+            return true;
+        }
+
+        //checking down right
+        if (grid[r + 1][c + 1] == grid[r][c] && grid[r + 2][c + 2] == grid[r][c]) {
+            return true;
+        }
+
+        //checking down left
+        if (grid[r + 1][c - 1] == grid[r][c] && grid[r + 2][c - 2] == grid[r][c]) {
+            return true;
+        }
+
+
+
     }
 
 
