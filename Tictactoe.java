@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.Scanner;
 
 public class Tictactoe {
 
@@ -32,6 +33,10 @@ public class Tictactoe {
         }
     }
 
+    public void newGame() {
+
+    }
+
     public boolean hasWon(int r, int c) {
         //checking the top
         if (r - 2 >= 0) {
@@ -51,52 +56,59 @@ public class Tictactoe {
                 return true;
             }
         }
-        
-
         //checking the right
          if (c + 2 <= _n) {
             if (grid[r][c + 1] == grid[r][c] && grid[r][c + 2] == grid[r][c]) {
                 return true;
             }
-3
         }
-
-
-        
         //checking up right
-        
-
-        if (grid[r - 1][c + 1] == grid[r][c] && grid[r - 2][c + 2] == grid[r][c]) {
-            return true;
-        }
-
+        if (r - 2 >= 0 && c + 2 <= _n) {
+            if (grid[r - 1][c + 1] == grid[r][c] && grid[r - 2][c + 2] == grid[r][c]) {
+                return true;
+            }
+        }        
         //checking up left
-        if (grid[r - 1][c - 1] == grid[r][c] && grid[r - 2][c - 2] == grid[r][c]) {
-            return true;
+        if (r - 2 >= 0 && c - 2 <= _n) {
+            if (grid[r - 1][c - 1] == grid[r][c] && grid[r - 2][c - 2] == grid[r][c]) {
+                return true;
+            }
         }
-
         //checking down right
-        if (grid[r + 1][c + 1] == grid[r][c] && grid[r + 2][c + 2] == grid[r][c]) {
-            return true;
+        if (r + 2 <= _n && c + 2 <= _n) {
+            if (grid[r + 1][c + 1] == grid[r][c] && grid[r + 2][c + 2] == grid[r][c]) {
+                return true;
+            }
         }
 
         //checking down left
-        if (grid[r + 1][c - 1] == grid[r][c] && grid[r + 2][c - 2] == grid[r][c]) {
-            return true;
+        if (r + 2 <= _n && c - 2 >= 0) {
+            if (grid[r + 1][c - 1] == grid[r][c] && grid[r + 2][c - 2] == grid[r][c]) {
+                return true;
+            }
         }
-
-
-
+        
+        return false;
     }
 
 
 
     public static void main(String[] args) {
-        Tictactoe game = new Tictactoe();
+        // Tictactoe game = new Tictactoe();
 
-        game.gridView();
-        game.add(1, 1, 1);
-        game.gridView();
+        // game.gridView();
+        // game.add(1, 1, 1);
+        // game.gridView();
+        Tictactoe game = new Tictactoe();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to Tic Tac Toe");
+        System.out.println("Player 1 choose a row");
+        int row = sc.nextInt();
+        System.out.println("Player 1 now choose a column");
+        int col = sc.nextInt();
+        System.out.println(roll);
+
+
 
     }
     
