@@ -1,3 +1,5 @@
+package tictactoe;
+
 import java.util.*;
 import java.util.Scanner;
 
@@ -33,6 +35,9 @@ public class Tictactoe {
         }
     }
 
+    /**
+        This will be completed based on later on design decisions.
+     */
     public void newGame() {
 
     }
@@ -91,27 +96,44 @@ public class Tictactoe {
         return false;
     }
 
-
-
     public static void main(String[] args) {
-        // Tictactoe game = new Tictactoe();
+        int counter = 1;
+        boolean gameOver = false;
 
-        // game.gridView();
-        // game.add(1, 1, 1);
-        // game.gridView();
         Tictactoe game = new Tictactoe();
         Scanner sc = new Scanner(System.in);
         System.out.println("Welcome to Tic Tac Toe");
-        System.out.println("Player 1 choose a row");
-        int row = sc.nextInt();
-        System.out.println("Player 1 now choose a column");
-        int col = sc.nextInt();
-        System.out.println(roll);
 
+        while(!gameOver) {
 
-
+            System.out.println("Player 1 choose a row");
+            int row = sc.nextInt();
+            System.out.println("Player 1 now choose a column");
+            int col = sc.nextInt();
+            System.out.println("row " + row);
+            System.out.println("col "+ col);
+            game.add(row, col, counter % 2);
+            game.gridView();
+            gameOver = game.hasWon(row, col);
+            if (gameOver) {
+                System.out.println("Player 1 you win");
+                break;
+            }
+            counter++;
+            System.out.println("Player 2 choose a row");
+            int row2 = sc.nextInt();
+            System.out.println("Player 2 choose a col");
+            int col2 = sc.nextInt();
+            game.add(row2, col2, (counter % 2) + 2);
+            counter++;
+            game.gridView();
+            gameOver = game.hasWon(row, col);
+            if (gameOver) {
+                System.out.println("Player 2 you win");
+                break;
+            }
+            
+        }
+        
     }
-    
-
-
 }
